@@ -62,19 +62,19 @@
 }
 
 #StakeResult .customGrid .scroll-row-wrapper .scroll-row .scroll-col .colArea.highlighted .card.card.card-spade {
-  background-image: url('/Images/Cards/suit-spade-blue.png');
+  background-image: url('../Images/Cards/suit-spade-blue.png');
 }
 
 #StakeResult .customGrid .scroll-row-wrapper .scroll-row .scroll-col .colArea.highlighted .card.card.card.card-club {
-  background-image: url('/Images/Cards/suit-club-blue.png');
+  background-image: url('../Images/Cards/suit-club-blue.png');
 }
 
 #StakeResult .customGrid .scroll-row-wrapper .scroll-row .scroll-col .colArea.highlighted .card.card.card.card.card-heart {
-  background-image: url('/Images/Cards/suit-heart-blue.png');
+  background-image: url('../Images/Cards/suit-heart-blue.png');
 }
 
 #StakeResult .customGrid .scroll-row-wrapper .scroll-row .scroll-col .colArea.highlighted .card.card.card.card.card-diamond {
-  background-image: url('/Images/Cards/suit-diamond-blue.png');
+  background-image: url('../Images/Cards/suit-diamond-blue.png');
 }
 
 #StakeResult .customGrid .card {
@@ -128,17 +128,17 @@
 }
 
 #StakeResult .customGrid .card.card-spade {
-  background-image: url('/Images/Cards/suit-spade.png');
+  background-image: url('../Images/Cards/suit-spade.png');
 }
 
 #StakeResult .customGrid .card.card-club {
-  background-image: url('/Images/Cards/suit-club.png');
+  background-image: url('../Images/Cards/suit-club.png');
 }
 
 #StakeResult .customGrid .card.card-heart {
-  background-image: url('/Images/Cards/suit-heart.png')
+  background-image: url('../Images/Cards/suit-heart.png')
 }
 
 #StakeResult .customGrid .card.card-diamond {
-  background-image: url('/Images/Cards/suit-diamond.png')
+  background-image: url('../Images/Cards/suit-diamond.png')
 }
