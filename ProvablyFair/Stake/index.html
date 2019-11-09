@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stake: Verifier</title>
+  <link rel="stylesheet" type="text/css" href="Styles/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="Styles/style.css"/>
+</head>
+<body>
+  <div class="container">
+  	<form id="StakeForm" class="hidden">
+      <div class="form-group">
+        <label for="games">Games</label>
+        <select class="form-control" id="games">
+          <option value="baccarat">Baccarat</option>
+          <option value="blackjack">Blackjack</option>
+          <option value="crash">Crash</option>
+          <option value="diamondpoker">Diamond Poker</option>
+          <option value="dice">Dice</option>
+          <option value="hilo">Hilo</option>
+          <option value="keno">Keno</option>
+          <option value="limbo">Limbo</option>
+          <option value="mines">Mines</option>
+          <option value="plinko">Plinko</option>
+          <option value="roulette">Roulette</option>
+          <option value="videopoker">Video Poker</option>
+          <option value="wheel">Wheel</option>
+          <option value="slots">Slots</option>
+        </select>
+      </div>
+  		<div class="form-group">
+  		  <label for="clientSeed">Client seed</label>
+        <input type="text" class="form-control" id="clientSeed" required>
+      </div>
+      <div class="form-group">
+        <label for="serverSeed">Server seed</label>
+        <input type="text" class="form-control" id="serverSeed" required>
+      </div>
+      <div class="formFields"></div>
+  	</form>
+    <div id="StakeResult">
+      <p>Please fill in all required fields</p>
+    </div>
+  </div>
+  <script src="build/app.js"></script>
+</body>
+</html>
+
