@@ -41,7 +41,7 @@ export default class RouletteUserInterface {
       nonce: FORM.getInputField('nonce'),
     });
 
-    RESULT.addText(`Winning number <span>${CARD}</span>`);
+    RESULT.addText(`Winning number: <span>${CARD}</span>`);
 
     for (let i = 0; i < 3; i++) {
       RESULT.addGrid([[
