@@ -2334,6 +2334,15 @@ function () {
      */
     value: function manipulateForm(FORM, FORM_INPUT_CACHE) {
       FORM.addInputField('nonce', 'Nonce', 'number');
+      FORM.addInputField('rowsPlinko', 'Rows', 'number');
+      var ROWS_ELEMENT = document.getElementById('rowsPlinko');
+      ROWS_ELEMENT.setAttribute('min', 8);
+      ROWS_ELEMENT.setAttribute('max', 16);
+
+      if (!FORM_INPUT_CACHE.rowsPlinko) {
+        ROWS_ELEMENT.value = 8;
+      }
+
       FORM.addSelectField('riskPlinko', 'Risk', [{
         value: 'low',
         text: 'Low'
@@ -2343,34 +2352,6 @@ function () {
       }, {
         value: 'high',
         text: 'High'
-      }]);
-      FORM.addSelectField('rowsPlinko', 'Rows', [{
-        value: '8',
-        text: '8'
-      }, {
-        value: '9',
-        text: '9'
-      }, {
-        value: '10',
-        text: '10'
-      }, {
-        value: '11',
-        text: '11'
-      }, {
-        value: '12',
-        text: '12'
-      }, {
-        value: '13',
-        text: '13'
-      }, {
-        value: '14',
-        text: '14'
-      }, {
-        value: '15',
-        text: '15'
-      }, {
-        value: '16',
-        text: '16'
       }]);
       FORM_INPUT_CACHE.clientSeed && (document.getElementById('clientSeed').value = FORM_INPUT_CACHE.clientSeed);
       FORM_INPUT_CACHE.serverSeed && (document.getElementById('serverSeed').value = FORM_INPUT_CACHE.serverSeed);
@@ -2502,7 +2483,7 @@ function () {
         clientSeed: FORM.getInputField('clientSeed'),
         nonce: FORM.getInputField('nonce')
       });
-      RESULT.addText("Winning number <span>".concat(CARD, "</span>"));
+      RESULT.addText("Winning number: <span>".concat(CARD, "</span>"));
 
       var _loop = function _loop(i) {
         RESULT.addGrid([_toConsumableArray(_ArrayUtils["default"].generateArrayWithRange(1, 13).map(function (index) {
@@ -2781,6 +2762,16 @@ function () {
      */
     value: function manipulateForm(FORM, FORM_INPUT_CACHE) {
       FORM.addInputField('nonce', 'Nonce', 'number');
+      FORM.addInputField('segmentsWheel', 'Segments', 'number');
+      var SEGMENTS_ELEMENT = document.getElementById('segmentsWheel');
+      SEGMENTS_ELEMENT.setAttribute('min', 10);
+      SEGMENTS_ELEMENT.setAttribute('max', 50);
+      SEGMENTS_ELEMENT.setAttribute('step', 10);
+
+      if (!FORM_INPUT_CACHE.segmentsWheel) {
+        SEGMENTS_ELEMENT.value = 10;
+      }
+
       FORM.addSelectField('riskWheel', 'Risk', [{
         value: 'low',
         text: 'Low'
@@ -2790,22 +2781,6 @@ function () {
       }, {
         value: 'high',
         text: 'High'
-      }]);
-      FORM.addSelectField('segmentsWheel', 'Segments', [{
-        value: '10',
-        text: '10'
-      }, {
-        value: '20',
-        text: '20'
-      }, {
-        value: '30',
-        text: '30'
-      }, {
-        value: '40',
-        text: '40'
-      }, {
-        value: '50',
-        text: '50'
       }]);
       FORM_INPUT_CACHE.clientSeed && (document.getElementById('clientSeed').value = FORM_INPUT_CACHE.clientSeed);
       FORM_INPUT_CACHE.serverSeed && (document.getElementById('serverSeed').value = FORM_INPUT_CACHE.serverSeed);
