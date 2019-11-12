@@ -1,0 +1,25 @@
+{
+  "name": "bitvest-verifier",
+  "version": "1.0.0",
+  "description": "Verifier for games on bitvest.io",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyran Rana",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "core-js": "^3.3.6",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "gulp": "^4.0.2",
+    "regenerator-runtime": "^0.13.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {}
+}
