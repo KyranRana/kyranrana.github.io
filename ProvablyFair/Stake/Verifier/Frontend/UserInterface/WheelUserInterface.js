@@ -15,19 +15,22 @@ export default class WheelUserInterface {
    */
   static manipulateForm(FORM, FORM_INPUT_CACHE) {
     FORM.addInputField('nonce', 'Nonce', 'number');
+    FORM.addInputField('segmentsWheel', 'Segments', 'number');
+
+    const SEGMENTS_ELEMENT = document.getElementById('segmentsWheel');
+
+    SEGMENTS_ELEMENT.setAttribute('min', 10);
+    SEGMENTS_ELEMENT.setAttribute('max', 50);
+    SEGMENTS_ELEMENT.setAttribute('step', 10);
+
+    if (!FORM_INPUT_CACHE.segmentsWheel) {
+      SEGMENTS_ELEMENT.value = 10;
+    }
 
     FORM.addSelectField('riskWheel', 'Risk', [
       {value: 'low', text: 'Low'},
       {value: 'medium', text: 'Medium'},
       {value: 'high', text: 'High'},
-    ]);
-
-    FORM.addSelectField('segmentsWheel', 'Segments', [
-      {value: '10', text: '10'},
-      {value: '20', text: '20'},
-      {value: '30', text: '30'},
-      {value: '40', text: '40'},
-      {value: '50', text: '50'},
     ]);
 
     FORM_INPUT_CACHE.clientSeed &&

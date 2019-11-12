@@ -15,23 +15,21 @@ export default class PlinkoUserInterface {
    */
   static manipulateForm(FORM, FORM_INPUT_CACHE) {
     FORM.addInputField('nonce', 'Nonce', 'number');
+    FORM.addInputField('rowsPlinko', 'Rows', 'number');
+
+    const ROWS_ELEMENT = document.getElementById('rowsPlinko');
+
+    ROWS_ELEMENT.setAttribute('min', 8);
+    ROWS_ELEMENT.setAttribute('max', 16);
+
+    if (!FORM_INPUT_CACHE.rowsPlinko) {
+      ROWS_ELEMENT.value = 8;
+    }
 
     FORM.addSelectField('riskPlinko', 'Risk', [
       {value: 'low', text: 'Low'},
       {value: 'medium', text: 'Medium'},
       {value: 'high', text: 'High'},
-    ]);
-
-    FORM.addSelectField('rowsPlinko', 'Rows', [
-      {value: '8', text: '8'},
-      {value: '9', text: '9'},
-      {value: '10', text: '10'},
-      {value: '11', text: '11'},
-      {value: '12', text: '12'},
-      {value: '13', text: '13'},
-      {value: '14', text: '14'},
-      {value: '15', text: '15'},
-      {value: '16', text: '16'},
     ]);
 
     FORM_INPUT_CACHE.clientSeed &&

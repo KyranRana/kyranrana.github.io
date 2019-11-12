@@ -1474,12 +1474,13 @@ function () {
 
     try {
       FORM_VALIDATOR.validateInputFieldsNotEmpty();
+      FORM_VALIDATOR.validateNumericInputFields();
       RESULT.removeAllContent();
       verifyHandler(FORM, RESULT);
     } catch (e) {
       console.log(e.stack);
       RESULT.removeAllContent();
-      RESULT.addText('Please fill in all required fields');
+      RESULT.addText(e.message);
     }
   }
 })();
@@ -2334,6 +2335,15 @@ function () {
      */
     value: function manipulateForm(FORM, FORM_INPUT_CACHE) {
       FORM.addInputField('nonce', 'Nonce', 'number');
+      FORM.addInputField('rowsPlinko', 'Rows', 'number');
+      var ROWS_ELEMENT = document.getElementById('rowsPlinko');
+      ROWS_ELEMENT.setAttribute('min', 8);
+      ROWS_ELEMENT.setAttribute('max', 16);
+
+      if (!FORM_INPUT_CACHE.rowsPlinko) {
+        ROWS_ELEMENT.value = 8;
+      }
+
       FORM.addSelectField('riskPlinko', 'Risk', [{
         value: 'low',
         text: 'Low'
@@ -2343,34 +2353,6 @@ function () {
       }, {
         value: 'high',
         text: 'High'
-      }]);
-      FORM.addSelectField('rowsPlinko', 'Rows', [{
-        value: '8',
-        text: '8'
-      }, {
-        value: '9',
-        text: '9'
-      }, {
-        value: '10',
-        text: '10'
-      }, {
-        value: '11',
-        text: '11'
-      }, {
-        value: '12',
-        text: '12'
-      }, {
-        value: '13',
-        text: '13'
-      }, {
-        value: '14',
-        text: '14'
-      }, {
-        value: '15',
-        text: '15'
-      }, {
-        value: '16',
-        text: '16'
       }]);
       FORM_INPUT_CACHE.clientSeed && (document.getElementById('clientSeed').value = FORM_INPUT_CACHE.clientSeed);
       FORM_INPUT_CACHE.serverSeed && (document.getElementById('serverSeed').value = FORM_INPUT_CACHE.serverSeed);
@@ -2502,7 +2484,7 @@ function () {
         clientSeed: FORM.getInputField('clientSeed'),
         nonce: FORM.getInputField('nonce')
       });
-      RESULT.addText("Winning number <span>".concat(CARD, "</span>"));
+      RESULT.addText("Winning number: <span>".concat(CARD, "</span>"));
 
       var _loop = function _loop(i) {
         RESULT.addGrid([_toConsumableArray(_ArrayUtils["default"].generateArrayWithRange(1, 13).map(function (index) {
@@ -2781,6 +2763,16 @@ function () {
      */
     value: function manipulateForm(FORM, FORM_INPUT_CACHE) {
       FORM.addInputField('nonce', 'Nonce', 'number');
+      FORM.addInputField('segmentsWheel', 'Segments', 'number');
+      var SEGMENTS_ELEMENT = document.getElementById('segmentsWheel');
+      SEGMENTS_ELEMENT.setAttribute('min', 10);
+      SEGMENTS_ELEMENT.setAttribute('max', 50);
+      SEGMENTS_ELEMENT.setAttribute('step', 10);
+
+      if (!FORM_INPUT_CACHE.segmentsWheel) {
+        SEGMENTS_ELEMENT.value = 10;
+      }
+
       FORM.addSelectField('riskWheel', 'Risk', [{
         value: 'low',
         text: 'Low'
@@ -2790,22 +2782,6 @@ function () {
       }, {
         value: 'high',
         text: 'High'
-      }]);
-      FORM.addSelectField('segmentsWheel', 'Segments', [{
-        value: '10',
-        text: '10'
-      }, {
-        value: '20',
-        text: '20'
-      }, {
-        value: '30',
-        text: '30'
-      }, {
-        value: '40',
-        text: '40'
-      }, {
-        value: '50',
-        text: '50'
       }]);
       FORM_INPUT_CACHE.clientSeed && (document.getElementById('clientSeed').value = FORM_INPUT_CACHE.clientSeed);
       FORM_INPUT_CACHE.serverSeed && (document.getElementById('serverSeed').value = FORM_INPUT_CACHE.serverSeed);
@@ -3225,6 +3201,41 @@ function () {
       for (var i = 0; i < INPUT_ELEMENTS.length; i++) {
         if (INPUT_ELEMENTS[i].required && INPUT_ELEMENTS[i].value === '') {
           throw new Error('Please fill in all required fields');
+        }
+      }
+    }
+    /**
+     * Verifies all numeric input fields in the form have values which comply
+     * with their restrictions.
+     *
+     * @throws {Error} if one of the numeric input fields has a value which
+     * does not comply with it's set attributes e.g. A value out of bounds of
+     * the set 'min' or 'max', or not within the 'step' range.
+     */
+
+  }, {
+    key: "validateNumericInputFields",
+    value: function validateNumericInputFields() {
+      var INPUT_ELEMENTS = this.FORM_ELEMENT.getElementsByTagName('input');
+
+      for (var i = 0; i < INPUT_ELEMENTS.length; i++) {
+        if (INPUT_ELEMENTS[i].required && INPUT_ELEMENTS[i].type === 'number') {
+          var MIN = INPUT_ELEMENTS[i].getAttribute('min') || 0;
+          var MAX = INPUT_ELEMENTS[i].getAttribute('max') || 1e8;
+          var STEP = INPUT_ELEMENTS[i].getAttribute('step') || 1;
+          var VALUE = INPUT_ELEMENTS[i].value;
+          var LABEL = INPUT_ELEMENTS[i].previousSibling.innerHTML;
+          var message = '';
+
+          if (+VALUE < +MIN || +VALUE > +MAX) {
+            message = "'".concat(LABEL, "' - ").concat(VALUE, " is not between ").concat(MIN, " and ").concat(MAX);
+          } else if ((VALUE - MIN) % STEP > 0) {
+            message = "'".concat(LABEL, "' - value ").concat(VALUE, " is not a ").concat(STEP, " step interval \n            away from ").concat(MIN);
+          }
+
+          if (message.length > 0) {
+            throw new Error(message);
+          }
         }
       }
     }
