@@ -164,6 +164,7 @@ class UserInterface {
 
     try {
       FORM_VALIDATOR.validateInputFieldsNotEmpty();
+      FORM_VALIDATOR.validateNumericInputFields();
 
       RESULT.removeAllContent();
 
@@ -172,7 +173,7 @@ class UserInterface {
       console.log(e.stack);
 
       RESULT.removeAllContent();
-      RESULT.addText('Please fill in all required fields');
+      RESULT.addText(e.message);
     }
   }
 })();

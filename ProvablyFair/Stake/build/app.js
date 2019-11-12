@@ -1474,12 +1474,13 @@ function () {
 
     try {
       FORM_VALIDATOR.validateInputFieldsNotEmpty();
+      FORM_VALIDATOR.validateNumericInputFields();
       RESULT.removeAllContent();
       verifyHandler(FORM, RESULT);
     } catch (e) {
       console.log(e.stack);
       RESULT.removeAllContent();
-      RESULT.addText('Please fill in all required fields');
+      RESULT.addText(e.message);
     }
   }
 })();
@@ -3200,6 +3201,41 @@ function () {
       for (var i = 0; i < INPUT_ELEMENTS.length; i++) {
         if (INPUT_ELEMENTS[i].required && INPUT_ELEMENTS[i].value === '') {
           throw new Error('Please fill in all required fields');
+        }
+      }
+    }
+    /**
+     * Verifies all numeric input fields in the form have values which comply
+     * with their restrictions.
+     *
+     * @throws {Error} if one of the numeric input fields has a value which
+     * does not comply with it's set attributes e.g. A value out of bounds of
+     * the set 'min' or 'max', or not within the 'step' range.
+     */
+
+  }, {
+    key: "validateNumericInputFields",
+    value: function validateNumericInputFields() {
+      var INPUT_ELEMENTS = this.FORM_ELEMENT.getElementsByTagName('input');
+
+      for (var i = 0; i < INPUT_ELEMENTS.length; i++) {
+        if (INPUT_ELEMENTS[i].required && INPUT_ELEMENTS[i].type === 'number') {
+          var MIN = INPUT_ELEMENTS[i].getAttribute('min') || 0;
+          var MAX = INPUT_ELEMENTS[i].getAttribute('max') || 1e8;
+          var STEP = INPUT_ELEMENTS[i].getAttribute('step') || 1;
+          var VALUE = INPUT_ELEMENTS[i].value;
+          var LABEL = INPUT_ELEMENTS[i].previousSibling.innerHTML;
+          var message = '';
+
+          if (+VALUE < +MIN || +VALUE > +MAX) {
+            message = "'".concat(LABEL, "' - ").concat(VALUE, " is not between ").concat(MIN, " and ").concat(MAX);
+          } else if ((VALUE - MIN) % STEP > 0) {
+            message = "'".concat(LABEL, "' - value ").concat(VALUE, " is not a ").concat(STEP, " step interval \n            away from ").concat(MIN);
+          }
+
+          if (message.length > 0) {
+            throw new Error(message);
+          }
         }
       }
     }
