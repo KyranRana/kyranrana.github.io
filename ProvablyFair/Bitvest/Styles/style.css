@@ -1,0 +1,79 @@
+.hidden {
+  display: none;
+}
+
+#BitvestResult p {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+#BitvestResult {
+  font-size: 16px;
+}
+
+#BitvestResult p span {
+  color: rgb(0, 135, 197);
+  font-size: 18px;
+}
+
+#BitvestResult p span.red {
+  color: rgb(228, 0, 0);
+}
+
+#BitvestResult p span.orange {
+  color: rgb(243, 103, 0)
+}
+
+#BitvestResult p span.green {
+  color: rgb(0, 193, 16);
+}
+
+#BitvestResult p span.teal {
+  color: rgb(0, 191, 167);
+}
+
+#BitvestResult p span.blue {
+  color: rgb(64, 95, 255);
+}
+
+#BitvestResult .customGrid {
+  border-top: 1px solid #bfbfbf;
+}
+
+#BitvestResult .customGrid .row .col {
+  text-align: center;
+  font-size: 16px;
+}
+
+#BitvestResult .customGrid .row .col .colArea {
+  padding: 10px 0;
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted {
+  background-color: rgb(221, 244, 255);
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted.highlighted-red {
+  background-color: #ffd5d1;
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted.highlighted-orange {
+  background-color: #ffd5b6;
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted.highlighted-green {
+  background-color: #b1ffbe;  
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted.highlighted-teal {
+  background-color: rgb(202, 255, 255);
+}
+
+#BitvestResult .customGrid .row .col .colArea.highlighted.highlighted-blue {
+  background-color: rgb(217, 225, 255);
+}
+
+#BitvestResult .reel-svg img {
+  width: 50px;
+  margin: 0 auto;
+}
