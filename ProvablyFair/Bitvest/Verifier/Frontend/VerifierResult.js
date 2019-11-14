@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /**
  * Manages result in frontend.
  * @class
@@ -28,8 +27,7 @@ export default class VerifierResult {
    * @param {string} TEXT - The text.
    */
   addText(TEXT) {
-    this.RESULT_ELEMENT.insertAdjacentHTML('beforeend',
-        `<p>${TEXT}</p>`);
+    this.RESULT_ELEMENT.insertAdjacentHTML('beforeend', `<p>${TEXT}</p>`);
   }
 
   /**
@@ -44,7 +42,8 @@ export default class VerifierResult {
     this.RESULT_ELEMENT.insertAdjacentHTML('beforeend',
         `<div class="customGrid">${ROWS.map((row) => `<div class="row">
         ${row.map((col) =>`<div class="col"><div class="colArea 
-          ${col.highlighted ? `highlighted highlighted-${col.highlightedColour}` : ''}">
+          ${col.highlighted ?
+            `highlighted highlighted-${col.highlightedColour}` : ''}">
           ${col.text}
         </div></div>`).join``}
         </div>`).join``}

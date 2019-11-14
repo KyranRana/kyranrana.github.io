@@ -1487,7 +1487,7 @@ function () {
 
       var POSITION_OVERVIEW = [];
       Object.keys(PAYOUT_INDEXES).map(function (PAYOUT_INDEX) {
-        return POSITION_OVERVIEW.push("<small>".concat(PAYOUT_INDEXES[PAYOUT_INDEX], " bit").concat(PAYOUT_INDEXES[PAYOUT_INDEX] > 2 ? 's' : '', " dropped into position ").concat(+PAYOUT_INDEX + 1, "</small>"));
+        return POSITION_OVERVIEW.push("<small>".concat(PAYOUT_INDEXES[PAYOUT_INDEX], " bit").concat(PAYOUT_INDEXES[PAYOUT_INDEX] > 1 ? 's' : '') + " dropped into position ".concat(+PAYOUT_INDEX + 1, "</small>"));
       });
       RESULT.addText("".concat(POSITION_OVERVIEW.join(_templateObject())));
 
@@ -1897,12 +1897,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT = 500;
 /**
  * Manages verifier form in frontend.
  * @class
  */
-
 var VerifierForm =
 /*#__PURE__*/
 function () {
@@ -1917,8 +1915,6 @@ function () {
     this.FORM_ELEMENT = FORM_ELEMENT;
     this.FORM_FIELDS_ELEMENT = FORM_ELEMENT.lastElementChild;
     this.FORM_GROUP_ID_ATTRIBUTE_SUFFIX = 'FormGroup';
-    this.FORM_INPUT_CACHE = {};
-    this.verifierFormAutoSubmitHandlerFunc = null;
   }
   /**
    * Clears all dynamic form fields in form.
@@ -1929,25 +1925,6 @@ function () {
     key: "clearFields",
     value: function clearFields() {
       this.FORM_FIELDS_ELEMENT.innerHTML = '';
-    }
-    /**
-     * Updates auto submit handler for verifier form to call verify method
-     * in success, and error method in error.
-     *
-     * @param {Closure} VERIFY_METHOD - The verify method.
-     * @param {Closure} ERROR_METHOD - The error method.
-     */
-
-  }, {
-    key: "updateAutoSubmit",
-    value: function updateAutoSubmit(VERIFY_METHOD) {
-      var _this = this;
-
-      var TARGET_ELEMENTS = this.FORM_ELEMENT.querySelectorAll('input, .formFields select');
-      document.removeEventListener(TARGET_ELEMENTS);
-      document.addEventListener(TARGET_ELEMENTS, function (EVENT) {
-        return _this._autoSubmit(EVENT, VERIFY_METHOD, ERROR_METHOD);
-      });
     }
     /**
      * Adds a new input field to the verifier form.
@@ -2012,29 +1989,6 @@ function () {
     key: "getSelectField",
     value: function getSelectField(ID_ATTRIBUTE_VALUE) {
       return document.getElementById(ID_ATTRIBUTE_VALUE).value;
-    }
-    /**
-     * Auto submit handler placeholder.
-     *
-     * @param {Object} EVENT - The event.
-     * @param {Closure} verifyMethod - The verify method.
-     * @param {Closure} errorMethod - The error method.
-     */
-
-  }, {
-    key: "_autoSubmit",
-    value: function _autoSubmit(EVENT, verifyMethod, errorMethod) {
-      this.verifierFormAutoSubmitHandlerFunc = setTimeout(function () {
-        var FORM_ID = EVENT.target.closest('form').id;
-        var VERIFIER_FORM_VALIDATOR = new VerifierFormValidator(FORM_ID);
-
-        try {
-          VERIFIER_FORM_VALIDATOR.validateInputFieldsNotEmpty();
-          verifyMethod();
-        } catch (e) {
-          errorMethod(e);
-        }
-      }, VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT);
     }
   }]);
 
@@ -2169,8 +2123,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/* eslint-disable max-len */
 
 /**
  * Manages result in frontend.
