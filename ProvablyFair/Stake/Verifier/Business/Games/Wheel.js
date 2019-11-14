@@ -19,11 +19,8 @@ export default class Wheel {
    * @return {string[]} The directions.
    */
   verify(GAME_SEED_DATA, SEGMENTS, RISK) {
-    const WHEEL_PAYOUT_TABLE = PayoutTables.getWheelPayoutTable();
+    const MULTIPLIER_INDEX = Math.floor(GameSeedUtils.extractFloat(GAME_SEED_DATA) * SEGMENTS);
 
-    const MULTIPLIER_INDEX = Math.floor(GameSeedUtils
-        .extractFloat(GAME_SEED_DATA) * SEGMENTS);
-
-    return WHEEL_PAYOUT_TABLE[SEGMENTS][RISK][MULTIPLIER_INDEX].toFixed(2);
+    return PayoutTables.getWheelPayoutTable()[SEGMENTS][RISK][MULTIPLIER_INDEX].toFixed(2);
   }
 }
