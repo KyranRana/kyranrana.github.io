@@ -27,8 +27,7 @@ export default class VerifierResult {
    * @param {string} TEXT - The text.
    */
   addText(TEXT) {
-    this.RESULT_ELEMENT.insertAdjacentHTML('beforeend',
-        `<p>${TEXT}</p>`);
+    this.RESULT_ELEMENT.insertAdjacentHTML('beforeend', `<p>${TEXT}</p>`);
   }
 
   /**

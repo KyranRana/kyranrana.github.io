@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
@@ -10,7 +11,6 @@ import LimboUserInterface from './UserInterface/LimboUserInterface';
 import PlinkoUserInterface from './UserInterface/PlinkoUserInterface';
 import WheelUserInterface from './UserInterface/WheelUserInterface';
 import VideoPokerUserInterface from './UserInterface/VideoPokerUserInterface';
-// eslint-disable-next-line max-len
 import DiamondPokerUserInterface from './UserInterface/DiamondPokerUserInterface';
 import RouletteUserInterface from './UserInterface/RouletteUserInterface';
 import KenoUserInterface from './UserInterface/KenoUserInterface';
@@ -125,19 +125,12 @@ class UserInterface {
 
   FORM_ELEMENT.addEventListener('change', (EVENT) =>
     EVENT.target.id === 'games' &&
-      UserInterface.changeGame(EVENT.target.value));
+    UserInterface.changeGame(EVENT.target.value));
 
-  FORM_ELEMENT.addEventListener('keyup',
-      createDelegate('input[type=text]')(handleAutoSubmit));
-
-  FORM_ELEMENT.addEventListener('keyup',
-      createDelegate('input[type=number]')(handleAutoSubmit));
-
-  FORM_ELEMENT.addEventListener('change',
-      createDelegate('input[type=number]')(handleAutoSubmit));
-
-  FORM_ELEMENT.addEventListener('change',
-      createDelegate('select')(handleAutoSubmit));
+  FORM_ELEMENT.addEventListener('keyup', createDelegate('input[type=text]')(handleAutoSubmit));
+  FORM_ELEMENT.addEventListener('keyup', createDelegate('input[type=number]')(handleAutoSubmit));
+  FORM_ELEMENT.addEventListener('change', createDelegate('input[type=number]')(handleAutoSubmit));
+  FORM_ELEMENT.addEventListener('change', createDelegate('select')(handleAutoSubmit));
 
   /**
    * Creates delegate for selector.

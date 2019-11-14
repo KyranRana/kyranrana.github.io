@@ -257,6 +257,7 @@ function () {
      * @return {float} The float.
      */
     value: function verify(GAME_SEED_DATA) {
+      // eslint-disable-next-line max-len
       return (Math.floor(_GameSeedUtils["default"].extractFloat(GAME_SEED_DATA) * 10001) / 100).toFixed(2);
     }
   }]);
@@ -426,7 +427,8 @@ function () {
     value: function verify(GAME_SEED_DATA) {
       var MAX_MINES = 25;
 
-      var MINES = _ArrayUtils["default"].generateArrayWithRange(1, MAX_MINES);
+      var MINES = _ArrayUtils["default"].generateArrayWithRange(1, MAX_MINES); // eslint-disable-next-line max-len
+
 
       return _GameSeedUtils["default"].extractFloats(GAME_SEED_DATA, MAX_MINES).map(function (_float, index) {
         return MINES.splice(Math.floor(_float * (MAX_MINES - index)), 1)[0];
@@ -2038,14 +2040,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  * Keno user interface.
  * @class
  */
-var KenoPokerUserInterface =
+var KenoUserInterface =
 /*#__PURE__*/
 function () {
-  function KenoPokerUserInterface() {
-    _classCallCheck(this, KenoPokerUserInterface);
+  function KenoUserInterface() {
+    _classCallCheck(this, KenoUserInterface);
   }
 
-  _createClass(KenoPokerUserInterface, null, [{
+  _createClass(KenoUserInterface, null, [{
     key: "manipulateForm",
 
     /**
@@ -2100,10 +2102,10 @@ function () {
     }
   }]);
 
-  return KenoPokerUserInterface;
+  return KenoUserInterface;
 }();
 
-exports["default"] = KenoPokerUserInterface;
+exports["default"] = KenoUserInterface;
 
 },{"../../Business/Games/Keno":4,"../../Business/Utils/ArrayUtils":12}],23:[function(require,module,exports){
 "use strict";
@@ -2812,7 +2814,6 @@ function () {
         clientSeed: FORM.getInputField('clientSeed'),
         nonce: FORM.getInputField('nonce')
       }, SEGMENTS, RISK);
-      console.log(PAYOUT);
       RESULT.addText("Wheel payout: <span>".concat(PAYOUT, "x</span>"));
       RESULT.addGrid([_toConsumableArray(PAYOUT_TABLE.map(function (payout) {
         return {
@@ -3009,12 +3010,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT = 500;
 /**
  * Manages verifier form in frontend.
  * @class
  */
-
 var VerifierForm =
 /*#__PURE__*/
 function () {
@@ -3029,8 +3028,6 @@ function () {
     this.FORM_ELEMENT = FORM_ELEMENT;
     this.FORM_FIELDS_ELEMENT = FORM_ELEMENT.lastElementChild;
     this.FORM_GROUP_ID_ATTRIBUTE_SUFFIX = 'FormGroup';
-    this.FORM_INPUT_CACHE = {};
-    this.verifierFormAutoSubmitHandlerFunc = null;
   }
   /**
    * Clears all dynamic form fields in form.
@@ -3041,25 +3038,6 @@ function () {
     key: "clearFields",
     value: function clearFields() {
       this.FORM_FIELDS_ELEMENT.innerHTML = '';
-    }
-    /**
-     * Updates auto submit handler for verifier form to call verify method
-     * in success, and error method in error.
-     *
-     * @param {Closure} VERIFY_METHOD - The verify method.
-     * @param {Closure} ERROR_METHOD - The error method.
-     */
-
-  }, {
-    key: "updateAutoSubmit",
-    value: function updateAutoSubmit(VERIFY_METHOD) {
-      var _this = this;
-
-      var TARGET_ELEMENTS = this.FORM_ELEMENT.querySelectorAll('input, .formFields select');
-      document.removeEventListener(TARGET_ELEMENTS);
-      document.addEventListener(TARGET_ELEMENTS, function (EVENT) {
-        return _this._autoSubmit(EVENT, VERIFY_METHOD, ERROR_METHOD);
-      });
     }
     /**
      * Adds a new input field to the verifier form.
@@ -3124,29 +3102,6 @@ function () {
     key: "getSelectField",
     value: function getSelectField(ID_ATTRIBUTE_VALUE) {
       return document.getElementById(ID_ATTRIBUTE_VALUE).value;
-    }
-    /**
-     * Auto submit handler placeholder.
-     *
-     * @param {Object} EVENT - The event.
-     * @param {Closure} verifyMethod - The verify method.
-     * @param {Closure} errorMethod - The error method.
-     */
-
-  }, {
-    key: "_autoSubmit",
-    value: function _autoSubmit(EVENT, verifyMethod, errorMethod) {
-      this.verifierFormAutoSubmitHandlerFunc = setTimeout(function () {
-        var FORM_ID = EVENT.target.closest('form').id;
-        var VERIFIER_FORM_VALIDATOR = new VerifierFormValidator(FORM_ID);
-
-        try {
-          VERIFIER_FORM_VALIDATOR.validateInputFieldsNotEmpty();
-          verifyMethod();
-        } catch (e) {
-          errorMethod(e);
-        }
-      }, VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT);
     }
   }]);
 
