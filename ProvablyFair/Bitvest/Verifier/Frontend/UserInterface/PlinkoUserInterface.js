@@ -87,7 +87,8 @@ export default class PlinkoUserInterface {
     const POSITION_OVERVIEW = [];
 
     Object.keys(PAYOUT_INDEXES).map((PAYOUT_INDEX) =>
-      POSITION_OVERVIEW.push(`<small>${PAYOUT_INDEXES[PAYOUT_INDEX]} bit${PAYOUT_INDEXES[PAYOUT_INDEX] > 2 ? 's' : ''} dropped into position ${+PAYOUT_INDEX + 1}</small>`));
+      POSITION_OVERVIEW.push(`<small>${PAYOUT_INDEXES[PAYOUT_INDEX]} bit${PAYOUT_INDEXES[PAYOUT_INDEX] > 1 ? 's' : ''}` +
+        ` dropped into position ${+PAYOUT_INDEX + 1}</small>`));
 
     RESULT.addText(`${POSITION_OVERVIEW.join`<br>`}`);
 
@@ -95,8 +96,7 @@ export default class PlinkoUserInterface {
       const MULTIPLIER_INDEXES = {};
 
       Object.keys(PAYOUT_INDEXES).map((payoutIndex) => {
-        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] =
-            MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] || 0;
+        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] = MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] || 0;
         MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] += PAYOUT_INDEXES[payoutIndex];
       });
 

@@ -11,8 +11,7 @@ export default class ArrayUtils {
    * @return {integer[]} The array covering the given range.
    */
   static generateArrayWithRange(MIN, MAX) {
-    return Array.from({length: MAX - MIN + 1}, (_, index) =>
-      index + MIN);
+    return Array.from({length: MAX - MIN + 1}, (_, index) => index + MIN);
   }
 
   /**
