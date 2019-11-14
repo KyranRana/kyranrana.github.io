@@ -62,7 +62,8 @@ export default class MinesUserInterface {
       RESULT.addGrid([[
         ...ArrayUtils.generateArrayWithRange(i * 5 + 1, i * 5 + 5).map((index) => {
           return {
-            text: `<div class='mine-svg'><img src="./Images/Mines/${MINES.indexOf(index) !== -1 ? 'mine.svg' : 'gem.svg'}"/></div>`,
+            text: `<div class='mine-svg'><img src="./Images/Mines/${MINES.indexOf(index) !== -1 ?
+              'mine.svg' : 'gem.svg'}"/></div>`,
           };
         }),
       ]]);

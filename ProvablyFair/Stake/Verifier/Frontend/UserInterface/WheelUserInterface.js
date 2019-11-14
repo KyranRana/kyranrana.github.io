@@ -75,8 +75,6 @@ export default class WheelUserInterface {
       nonce: FORM.getInputField('nonce'),
     }, SEGMENTS, RISK);
 
-    console.log(PAYOUT);
-
     RESULT.addText(`Wheel payout: <span>${PAYOUT}x</span>`);
 
     RESULT.addGrid([[

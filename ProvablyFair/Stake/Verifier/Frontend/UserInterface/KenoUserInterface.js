@@ -6,7 +6,7 @@ import ArrayUtils from '../../Business/Utils/ArrayUtils';
  * Keno user interface.
  * @class
  */
-export default class KenoPokerUserInterface {
+export default class KenoUserInterface {
   /**
    * Manipulates form for Keno.
    *

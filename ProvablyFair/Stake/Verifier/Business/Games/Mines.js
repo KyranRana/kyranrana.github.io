@@ -21,8 +21,8 @@ export default class Mines {
 
     const MINES = ArrayUtils.generateArrayWithRange(1, MAX_MINES);
 
-    return GameSeedUtils.extractFloats(GAME_SEED_DATA, MAX_MINES).map(
-        (float, index) => MINES.splice(Math.floor(float * (MAX_MINES -
-          index)), 1)[0]);
+    // eslint-disable-next-line max-len
+    return GameSeedUtils.extractFloats(GAME_SEED_DATA, MAX_MINES).map((float, index) =>
+      MINES.splice(Math.floor(float * (MAX_MINES - index)), 1)[0]);
   }
 }

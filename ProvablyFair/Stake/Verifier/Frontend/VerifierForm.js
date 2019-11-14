@@ -1,7 +1,5 @@
 import BootstrapFormUtils from './Utils/BootstrapFormUtils';
 
-const VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT = 500;
-
 /**
  * Manages verifier form in frontend.
  * @class
@@ -15,11 +13,7 @@ export default class VerifierForm {
   constructor(FORM_ELEMENT) {
     this.FORM_ELEMENT = FORM_ELEMENT;
     this.FORM_FIELDS_ELEMENT = FORM_ELEMENT.lastElementChild;
-
     this.FORM_GROUP_ID_ATTRIBUTE_SUFFIX = 'FormGroup';
-    this.FORM_INPUT_CACHE = {};
-
-    this.verifierFormAutoSubmitHandlerFunc = null;
   }
 
   /**
@@ -27,22 +21,6 @@ export default class VerifierForm {
    */
   clearFields() {
     this.FORM_FIELDS_ELEMENT.innerHTML = '';
-  }
-
-  /**
-   * Updates auto submit handler for verifier form to call verify method
-   * in success, and error method in error.
-   *
-   * @param {Closure} VERIFY_METHOD - The verify method.
-   * @param {Closure} ERROR_METHOD - The error method.
-   */
-  updateAutoSubmit(VERIFY_METHOD) {
-    const TARGET_ELEMENTS = this.FORM_ELEMENT
-        .querySelectorAll('input, .formFields select');
-
-    document.removeEventListener(TARGET_ELEMENTS);
-    document.addEventListener(TARGET_ELEMENTS, (EVENT) =>
-      this._autoSubmit(EVENT, VERIFY_METHOD, ERROR_METHOD));
   }
 
   /**
@@ -108,27 +86,5 @@ export default class VerifierForm {
    */
   getSelectField(ID_ATTRIBUTE_VALUE) {
     return document.getElementById(ID_ATTRIBUTE_VALUE).value;
-  }
-
-  /**
-   * Auto submit handler placeholder.
-   *
-   * @param {Object} EVENT - The event.
-   * @param {Closure} verifyMethod - The verify method.
-   * @param {Closure} errorMethod - The error method.
-   */
-  _autoSubmit(EVENT, verifyMethod, errorMethod) {
-    this.verifierFormAutoSubmitHandlerFunc = setTimeout(() => {
-      const FORM_ID = EVENT.target.closest('form').id;
-      const VERIFIER_FORM_VALIDATOR = new VerifierFormValidator(FORM_ID);
-
-      try {
-        VERIFIER_FORM_VALIDATOR.validateInputFieldsNotEmpty();
-
-        verifyMethod();
-      } catch (e) {
-        errorMethod(e);
-      }
-    }, VERIFIER_FORM_AUTO_SUBMIT_TIMEOUT);
   }
 }
