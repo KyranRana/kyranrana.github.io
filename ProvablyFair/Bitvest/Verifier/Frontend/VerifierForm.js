@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import BootstrapFormUtils from './Utils/BootstrapFormUtils';
 
 /**
@@ -32,11 +33,8 @@ export default class VerifierForm {
    * @param {string} [REQUIRED=true] - False if input is optional.
    */
   addInputField(ID_ATTRIBUTE_VALUE, NAME, TYPE = 'text', REQUIRED = true) {
-    const LABEL_ELEMENT = BootstrapFormUtils
-        .createLabelElement(ID_ATTRIBUTE_VALUE, NAME);
-
-    const INPUT_ELEMENT = BootstrapFormUtils
-        .createInputElement(ID_ATTRIBUTE_VALUE, TYPE, REQUIRED);
+    const LABEL_ELEMENT = BootstrapFormUtils.createLabelElement(ID_ATTRIBUTE_VALUE, NAME);
+    const INPUT_ELEMENT = BootstrapFormUtils.createInputElement(ID_ATTRIBUTE_VALUE, TYPE, REQUIRED);
 
     this.FORM_FIELDS_ELEMENT.appendChild(
         BootstrapFormUtils.createFormGroupElement(
@@ -65,11 +63,8 @@ export default class VerifierForm {
    * @param {string} OPTIONS[].text - The text for a select option.
    */
   addSelectField(ID_ATTRIBUTE_VALUE, NAME, OPTIONS) {
-    const LABEL_ELEMENT = BootstrapFormUtils
-        .createLabelElement(ID_ATTRIBUTE_VALUE, NAME);
-
-    const SELECT_ELEMENT = BootstrapFormUtils
-        .createSelectElement(ID_ATTRIBUTE_VALUE, OPTIONS);
+    const LABEL_ELEMENT = BootstrapFormUtils.createLabelElement(ID_ATTRIBUTE_VALUE, NAME);
+    const SELECT_ELEMENT = BootstrapFormUtils.createSelectElement(ID_ATTRIBUTE_VALUE, OPTIONS);
 
     this.FORM_FIELDS_ELEMENT.appendChild(
         BootstrapFormUtils.createFormGroupElement(
