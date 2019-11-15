@@ -37,7 +37,7 @@ export default class KenoUserInterface {
 
     RESULT.addText(`Chosen numbers <span>${HITS.join`, `}</span>`);
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 8; i++) {
       RESULT.addGrid([[
         ...ArrayUtils.generateArrayWithRange(i * 10 + 1, i * 10 + 10).map((index) => {
           return {
