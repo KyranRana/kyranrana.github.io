@@ -15,7 +15,6 @@ export default class KenoUserInterface {
    */
   static manipulateForm(FORM, FORM_INPUT_CACHE) {
     FORM.addInputField('nonce', 'Nonce', 'number');
-    FORM.addInputField('noOfHitsKeno', 'Number of hits', 'number');
 
     const NO_OF_HITS_ELEMENT = document.getElementById('noOfHitsKeno');
 
@@ -37,10 +36,6 @@ export default class KenoUserInterface {
     FORM_INPUT_CACHE.nonce &&
       (document.getElementById('nonce').value =
         FORM_INPUT_CACHE.nonce);
-
-    FORM_INPUT_CACHE.noOfHitsKeno &&
-      (document.getElementById('noOfHitsKeno').value =
-        FORM_INPUT_CACHE.noOfHitsKeno);
   }
 
   /**
@@ -54,7 +49,7 @@ export default class KenoUserInterface {
       serverSeed: FORM.getInputField('serverSeed'),
       clientSeed: FORM.getInputField('clientSeed'),
       nonce: FORM.getInputField('nonce'),
-    }).slice(0, FORM.getInputField('noOfHitsKeno'));
+    });
 
     RESULT.addText(`Chosen numbers <span>${CARDS.sort((a, b) => a - b).join`, `}</span>`);
 
