@@ -1508,7 +1508,7 @@ function () {
       RESULT.addText("Chosen numbers <span>".concat(HITS.join(_templateObject()), "</span>"));
 
       for (var i = 0; i < 9; i++) {
-        RESULT.addGrid([_toConsumableArray(_ArrayUtils["default"].generateArrayWithRange(i * 8 + 1, i * 8 + 8).map(function (index) {
+        RESULT.addGrid([_toConsumableArray(_ArrayUtils["default"].generateArrayWithRange(i * 10 + 1, i * 10 + 10).map(function (index) {
           return {
             text: index,
             highlighted: HITS.indexOf(index) !== -1

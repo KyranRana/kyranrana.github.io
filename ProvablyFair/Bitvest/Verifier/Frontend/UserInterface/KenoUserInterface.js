@@ -39,7 +39,7 @@ export default class KenoUserInterface {
 
     for (let i = 0; i < 9; i++) {
       RESULT.addGrid([[
-        ...ArrayUtils.generateArrayWithRange(i * 8 + 1, i * 8 + 8).map((index) => {
+        ...ArrayUtils.generateArrayWithRange(i * 10 + 1, i * 10 + 10).map((index) => {
           return {
             text: index,
             highlighted: HITS.indexOf(index) !== -1,
