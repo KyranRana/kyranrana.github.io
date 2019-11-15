@@ -776,10 +776,8 @@ function () {
      * @return {string[]} The directions.
      */
     value: function verify(GAME_SEED_DATA, SEGMENTS, RISK) {
-      var WHEEL_PAYOUT_TABLE = _PayoutTables["default"].getWheelPayoutTable();
-
       var MULTIPLIER_INDEX = Math.floor(_GameSeedUtils["default"].extractFloat(GAME_SEED_DATA) * SEGMENTS);
-      return WHEEL_PAYOUT_TABLE[SEGMENTS][RISK][MULTIPLIER_INDEX].toFixed(2);
+      return _PayoutTables["default"].getWheelPayoutTable()[SEGMENTS][RISK][MULTIPLIER_INDEX].toFixed(2);
     }
   }]);
 
@@ -2058,19 +2056,9 @@ function () {
      */
     value: function manipulateForm(FORM, FORM_INPUT_CACHE) {
       FORM.addInputField('nonce', 'Nonce', 'number');
-      FORM.addInputField('noOfHitsKeno', 'Number of hits', 'number');
-      var NO_OF_HITS_ELEMENT = document.getElementById('noOfHitsKeno');
-      NO_OF_HITS_ELEMENT.setAttribute('min', 1);
-      NO_OF_HITS_ELEMENT.setAttribute('max', 10);
-
-      if (!FORM_INPUT_CACHE.noOfHitsKeno) {
-        NO_OF_HITS_ELEMENT.value = 10;
-      }
-
       FORM_INPUT_CACHE.clientSeed && (document.getElementById('clientSeed').value = FORM_INPUT_CACHE.clientSeed);
       FORM_INPUT_CACHE.serverSeed && (document.getElementById('serverSeed').value = FORM_INPUT_CACHE.serverSeed);
       FORM_INPUT_CACHE.nonce && (document.getElementById('nonce').value = FORM_INPUT_CACHE.nonce);
-      FORM_INPUT_CACHE.noOfHitsKeno && (document.getElementById('noOfHitsKeno').value = FORM_INPUT_CACHE.noOfHitsKeno);
     }
     /**
      * Submission handler for Keno.
@@ -2086,7 +2074,7 @@ function () {
         serverSeed: FORM.getInputField('serverSeed'),
         clientSeed: FORM.getInputField('clientSeed'),
         nonce: FORM.getInputField('nonce')
-      }).slice(0, FORM.getInputField('noOfHitsKeno'));
+      });
       RESULT.addText("Chosen numbers <span>".concat(CARDS.sort(function (a, b) {
         return a - b;
       }).join(_templateObject()), "</span>"));
