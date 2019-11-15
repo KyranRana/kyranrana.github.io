@@ -16,15 +16,6 @@ export default class KenoUserInterface {
   static manipulateForm(FORM, FORM_INPUT_CACHE) {
     FORM.addInputField('nonce', 'Nonce', 'number');
 
-    const NO_OF_HITS_ELEMENT = document.getElementById('noOfHitsKeno');
-
-    NO_OF_HITS_ELEMENT.setAttribute('min', 1);
-    NO_OF_HITS_ELEMENT.setAttribute('max', 10);
-
-    if (!FORM_INPUT_CACHE.noOfHitsKeno) {
-      NO_OF_HITS_ELEMENT.value = 10;
-    }
-
     FORM_INPUT_CACHE.clientSeed &&
       (document.getElementById('clientSeed').value =
         FORM_INPUT_CACHE.clientSeed);
