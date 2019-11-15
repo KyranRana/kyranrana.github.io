@@ -36,7 +36,7 @@ export default class Keno {
       let decimal = DECIMAL_GENERATOR.next().value;
 
       if (!Number.isInteger(decimal)) {
-        console.log('we ran out of hex values!');
+        console.log('we have run out of hex values!');
         break;
       }
 

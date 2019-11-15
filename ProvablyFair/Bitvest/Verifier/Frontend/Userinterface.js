@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime';
 
 import BitspinUserInterface from './UserInterface/BitspinUserInterface';
 import DiceUserInterface from './UserInterface/DiceUserInterface';
+import KenoUserInterface from './UserInterface/KenoUserInterface';
 import PlinkoUserInterface from './UserInterface/PlinkoUserInterface';
 import RouletteUserInterface from './UserInterface/RouletteUserInterface';
 import SlotsUserInterface from './UserInterface/SlotsUserInterface';
@@ -39,6 +40,10 @@ class UserInterface {
       case 'dice':
         DiceUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
         verifyHandler = DiceUserInterface.verify;
+        break;
+      case 'keno':
+        KenoUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
+        verifyHandler = KenoUserInterface.verify;
         break;
       case 'plinko':
         PlinkoUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
