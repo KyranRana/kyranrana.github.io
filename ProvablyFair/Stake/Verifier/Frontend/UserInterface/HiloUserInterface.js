@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Cards from '../../Business/Games/Cards';
 
 /**
@@ -74,8 +73,10 @@ export default class HiloUserInterface {
         const MOVE = MOVES.shift();
 
         return {
-          text: `<div class="card card-${card[1].toLowerCase()} width-125 height-125">${card[0]}
-          ${MOVE !== undefined ? `<div class="sign sign-${MOVE.toLowerCase()}">${MOVE}</div>` : ``}</div>`,
+          text: `<div class="card card-${card[1].toLowerCase()}` +
+            ` width-125 height-125">${card[0]}
+          ${MOVE !== undefined ? `<div class="sign sign-${MOVE.toLowerCase()}` +
+            `">${MOVE}</div>` : ``}</div>`,
         };
       }),
     ]]);

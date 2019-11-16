@@ -16,8 +16,9 @@ export default class Slots {
    * @return {string[]} The central positions for each reel.
    */
   verify(GAME_SEED_DATA, ROUNDS) {
-    // eslint-disable-next-line max-len
-    return GameSeedUtils.extractFloats(GAME_SEED_DATA, ROUNDS * 5 + 5).slice(-5).map((float, index) =>
-      Math.floor(float * (index === 4 ? 41 : 30)));
+    return GameSeedUtils.extractFloats(GAME_SEED_DATA, ROUNDS * 5 + 5)
+        .slice(-5)
+        .map((float, index) =>
+          Math.floor(float * (index === 4 ? 41 : 30)));
   }
 }

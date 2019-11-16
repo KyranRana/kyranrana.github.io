@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import ArrayUtils from '../../Business/Utils/ArrayUtils';
 import Keno from '../../Business/Games/Keno';
 
@@ -34,17 +33,17 @@ export default class KenoUserInterface {
       userSeed: FORM.getInputField('userSeed'),
     });
 
-
     RESULT.addText(`Chosen numbers <span>${HITS.join`, `}</span>`);
 
     for (let i = 0; i < 8; i++) {
       RESULT.addGrid([[
-        ...ArrayUtils.generateArrayWithRange(i * 10 + 1, i * 10 + 10).map((index) => {
-          return {
-            text: index,
-            highlighted: HITS.indexOf(index) !== -1,
-          };
-        }),
+        ...ArrayUtils.generateArrayWithRange(i * 10 + 1, i * 10 + 10)
+            .map((index) => {
+              return {
+                text: index,
+                highlighted: HITS.indexOf(index) !== -1,
+              };
+            }),
       ]]);
     }
   }

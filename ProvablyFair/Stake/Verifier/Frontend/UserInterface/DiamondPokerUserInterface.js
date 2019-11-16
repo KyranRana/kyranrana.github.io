@@ -45,8 +45,8 @@ export default class DiamondPokerUserInterface {
       ...CARDS.slice(0, 5).map((card) => {
         return {
           text: `<div class="card diamond-card width-125 height-125">
-          <img src="./Images/Cards/DiamondPoker/${card.toLowerCase()}.svg"/>
-          </div>`,
+            <img src="./Images/Cards/DiamondPoker/${card.toLowerCase()}.svg"/>
+            </div>`,
         };
       }),
     ]]);
@@ -55,10 +55,9 @@ export default class DiamondPokerUserInterface {
     RESULT.addScrollingGrid(140 * 5, [[
       ...CARDS.slice(5).map((card) => {
         return {
-          // eslint-disable-next-line max-len
           text: `<div class="card diamond-card width-125 height-125">
-          <img src="./Images/Cards/DiamondPoker/${card.toLowerCase()}.svg"/>
-          </div>`,
+            <img src="./Images/Cards/DiamondPoker/${card.toLowerCase()}.svg"/>
+            </div>`,
         };
       }),
     ]]);

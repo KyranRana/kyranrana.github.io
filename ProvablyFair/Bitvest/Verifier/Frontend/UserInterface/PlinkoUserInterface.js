@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import PayoutTables from '../../Business/Games/PayoutTables';
 import Plinko from '../../Business/Games/Plinko';
 import ArrayUtils from '../../Business/Utils/ArrayUtils';
@@ -77,7 +76,8 @@ export default class PlinkoUserInterface {
       if (PATH[0] === 'LEFT') {
         chosenIndex = PATH.filter((direction) => direction === 'RIGHT').length;
       } else {
-        chosenIndex = 17 - PATH.filter((direction) => direction === 'LEFT').length - 1;
+        chosenIndex = 17 - PATH.filter((direction) =>
+          direction === 'LEFT').length - 1;
       }
 
       PAYOUT_INDEXES[chosenIndex] = PAYOUT_INDEXES[chosenIndex] || 0;
@@ -87,8 +87,9 @@ export default class PlinkoUserInterface {
     const POSITION_OVERVIEW = [];
 
     Object.keys(PAYOUT_INDEXES).map((PAYOUT_INDEX) =>
-      POSITION_OVERVIEW.push(`<small>${PAYOUT_INDEXES[PAYOUT_INDEX]} bit${PAYOUT_INDEXES[PAYOUT_INDEX] > 1 ? 's' : ''}` +
-        ` dropped into position ${+PAYOUT_INDEX + 1}</small>`));
+      POSITION_OVERVIEW.push(`<small>${PAYOUT_INDEXES[PAYOUT_INDEX]} bit` +
+        ` ${PAYOUT_INDEXES[PAYOUT_INDEX] > 1 ? 's' : ''} dropped into` +
+          ` position ${+PAYOUT_INDEX + 1}</small>`));
 
     RESULT.addText(`${POSITION_OVERVIEW.join`<br>`}`);
 
@@ -96,11 +97,15 @@ export default class PlinkoUserInterface {
       const MULTIPLIER_INDEXES = {};
 
       Object.keys(PAYOUT_INDEXES).map((payoutIndex) => {
-        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] = MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] || 0;
-        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] += PAYOUT_INDEXES[payoutIndex];
+        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] =
+          MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] || 0;
+        MULTIPLIER_INDEXES[FULL_PAYOUT_TABLE[payoutIndex]] +=
+          PAYOUT_INDEXES[payoutIndex];
       });
 
-      const PAYOUT_TABLE = ArrayUtils.generateArrayOfUniqueItems(FULL_PAYOUT_TABLE);
+      const PAYOUT_TABLE = ArrayUtils.generateArrayOfUniqueItems(
+          FULL_PAYOUT_TABLE);
+
       PAYOUT_TABLE.sort((a, b) => a - b);
 
       RESULT.addGrid([[

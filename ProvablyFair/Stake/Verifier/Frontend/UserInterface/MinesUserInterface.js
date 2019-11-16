@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Mines from '../../Business/Games/Mines';
 import ArrayUtils from '../../Business/Utils/ArrayUtils';
 
@@ -56,16 +55,19 @@ export default class MinesUserInterface {
       nonce: FORM.getInputField('nonce'),
     }).slice(0, FORM.getInputField('noOfMines'));
 
-    RESULT.addText(`Chosen mines <span>${MINES.sort((a, b) => a - b).join`, `}</span>`);
+    RESULT.addText(`Chosen mines <span>` +
+      `${MINES.sort((a, b) => a - b).join`, `}</span>`);
 
     for (let i = 0; i < 5; i++) {
       RESULT.addGrid([[
-        ...ArrayUtils.generateArrayWithRange(i * 5 + 1, i * 5 + 5).map((index) => {
-          return {
-            text: `<div class='mine-svg'><img src="./Images/Mines/${MINES.indexOf(index) !== -1 ?
-              'mine.svg' : 'gem.svg'}"/></div>`,
-          };
-        }),
+        ...ArrayUtils.generateArrayWithRange(i * 5 + 1, i * 5 + 5)
+            .map((index) => {
+              return {
+                text: `<div class='mine-svg'><img src="./Images/Mines/` +
+                  `${MINES.indexOf(index) !== -1 ? 'mine.svg' : 'gem.svg'}"/>
+                  </div>`,
+              };
+            }),
       ]]);
     }
   }

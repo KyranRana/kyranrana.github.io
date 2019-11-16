@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
@@ -74,10 +73,17 @@ class UserInterface {
     EVENT.target.id === 'games' &&
       UserInterface.changeGame(EVENT.target.value));
 
-  FORM_ELEMENT.addEventListener('keyup', createDelegate('input[type=text]')(handleAutoSubmit));
-  FORM_ELEMENT.addEventListener('keyup', createDelegate('input[type=number]')(handleAutoSubmit));
-  FORM_ELEMENT.addEventListener('change', createDelegate('input[type=number]')(handleAutoSubmit));
-  FORM_ELEMENT.addEventListener('change', createDelegate('select')(handleAutoSubmit));
+  FORM_ELEMENT.addEventListener('keyup',
+      createDelegate('input[type=text]')(handleAutoSubmit));
+
+  FORM_ELEMENT.addEventListener('keyup',
+      createDelegate('input[type=number]')(handleAutoSubmit));
+
+  FORM_ELEMENT.addEventListener('change',
+      createDelegate('input[type=number]')(handleAutoSubmit));
+
+  FORM_ELEMENT.addEventListener('change',
+      createDelegate('select')(handleAutoSubmit));
 
   /**
    * Creates delegate for selector.
