@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import Keno from '../../Business/Games/Keno';
 import ArrayUtils from '../../Business/Utils/ArrayUtils';
 
@@ -46,12 +45,13 @@ export default class KenoUserInterface {
 
     for (let i = 0; i < 5; i++) {
       RESULT.addGrid([[
-        ...ArrayUtils.generateArrayWithRange(i * 8 + 1, i * 8 + 8).map((index) => {
-          return {
-            text: index,
-            highlighted: CARDS.indexOf(index) !== -1,
-          };
-        }),
+        ...ArrayUtils.generateArrayWithRange(i * 8 + 1, i * 8 + 8)
+            .map((index) => {
+              return {
+                text: index,
+                highlighted: CARDS.indexOf(index) !== -1,
+              };
+            }),
       ]]);
     }
   }

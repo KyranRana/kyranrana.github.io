@@ -17,6 +17,7 @@
     "eslint": "^6.6.0",
     "eslint-config-google": "^0.14.0",
     "gulp": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
     "regenerator-runtime": "^0.13.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"

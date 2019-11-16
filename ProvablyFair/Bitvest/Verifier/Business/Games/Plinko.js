@@ -36,8 +36,8 @@ export default class Plinko {
     while (DIRECTION_OF_BITS.length < DROPS) {
       const BINARY = BINARY_GENERATOR.next().value;
 
-      // eslint-disable-next-line max-len
-      const DIRECTIONS = [...BINARY].map((binary) => binary == 0 ? 'LEFT' : 'RIGHT');
+      const DIRECTIONS = [...BINARY].map((binary) =>
+        binary == 0 ? 'LEFT' : 'RIGHT');
 
       DIRECTION_OF_BITS.push(DIRECTIONS);
     }

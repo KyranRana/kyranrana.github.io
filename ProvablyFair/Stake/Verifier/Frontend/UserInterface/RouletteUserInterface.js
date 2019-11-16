@@ -47,8 +47,8 @@ export default class RouletteUserInterface {
       RESULT.addGrid([[
         ...ArrayUtils.generateArrayWithRange(1, 13).map((index) => {
           return {
-            // eslint-disable-next-line max-len
-            text: index === 1 && i === 0 ? '0' : (index === 1 ? '' : 3 * (index - 1) - i),
+            text: index === 1 && i === 0 ? '0' : (index === 1 ? '' :
+              3 * (index - 1) - i),
             highlighted: CARD == 3 * (index - 1) - i,
           };
         }),

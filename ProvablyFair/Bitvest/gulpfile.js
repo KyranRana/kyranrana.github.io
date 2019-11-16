@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const uglify = require('gulp-uglify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
@@ -11,6 +12,7 @@ gulp.task('es6', () =>
       .bundle()
       .pipe(source('app.js'))
       .pipe(buffer())
+      .pipe(uglify())
       .pipe(gulp.dest('build')));
 
 gulp.task('default', () =>
