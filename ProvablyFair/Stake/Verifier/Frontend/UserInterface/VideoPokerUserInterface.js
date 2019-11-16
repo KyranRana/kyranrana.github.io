@@ -43,8 +43,8 @@ export default class VideoPokerUserInterface {
     RESULT.addScrollingGrid(140 * 10, [[
       ...CARDS.map((card) => {
         return {
-          // eslint-disable-next-line max-len
-          text: `<div class="card card-${card[1].toLowerCase()} width-125 height-125">${card[0]}</div>`,
+          text: `<div class="card card-${card[1].toLowerCase()}` +
+            ` width-125 height-125">${card[0]}</div>`,
         };
       }),
     ]]);
