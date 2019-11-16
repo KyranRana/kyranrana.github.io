@@ -34,7 +34,6 @@ export default class KenoUserInterface {
       userSeed: FORM.getInputField('userSeed'),
     });
 
-
     RESULT.addText(`Chosen numbers <span>${HITS.join`, `}</span>`);
 
     for (let i = 0; i < 8; i++) {
