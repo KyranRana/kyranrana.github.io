@@ -16,6 +16,7 @@ import RouletteUserInterface from './UserInterface/RouletteUserInterface';
 import KenoUserInterface from './UserInterface/KenoUserInterface';
 import MinesUserInterface from './UserInterface/MinesUserInterface';
 import SlotsUserInterface from './UserInterface/SlotsUserInterface';
+import SlideUserInterface from './UserInterface/SlideUserInterface';
 import VerifierForm from './VerifierForm';
 import VerifierResult from './VerifierResult';
 import VerifierFormValidator from './VerifierFormValidator';
@@ -85,6 +86,10 @@ class UserInterface {
       case 'slots':
         SlotsUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
         verifyHandler = SlotsUserInterface.verify;
+        break;
+      case 'slide':
+        SlideUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
+        verifyHandler = SlideUserInterface.verify;
         break;
       case 'limbo':
         LimboUserInterface.manipulateForm(FORM, FORM_INPUT_CACHE);
